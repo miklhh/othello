@@ -1,6 +1,7 @@
 #include "othello-game.h"
 #include <iostream>
 #include <utility>
+#include <array>
 
 // Constructor.
 game::game()
@@ -17,12 +18,12 @@ game::game()
     initNewNeighbours();
 }
 
-// All eight combinations of pairs [-1, 1], [-1, 1] with 0, 0 excluded.
-const static std::vector<std::pair<int, int>> seq_exclusive{ 
+// All eight combinations of pairs { [-1, 1], [-1, 1] } with { 0, 0 } excluded.
+constexpr static std::array<std::pair<int, int>, 8> seq_exclusive { {
     { -1, -1 }, { -1, 0 }, { -1, 1 },
     {  0, -1 }, /*     */  {  0, 1 },
     {  1, -1 }, {  1, 0 }, {  1, 1 } 
-};
+} };
 
 // The make move method!
 bool game::makeMove(unsigned x, unsigned y, piece color)
@@ -86,10 +87,10 @@ bool game::makeMove(unsigned x, unsigned y, piece color)
         }
 
         // Test if the opponent can make any move.
-        if ( getLegitMoves(reverseColor(color)).testEmpty() )
+        if ( getLegitMoves(reverseColor(color)).empty() )
         {
             // Test if the move-maker can't make any move
-            if (getLegitMoves(color).testEmpty()) 
+            if (getLegitMoves(color).empty()) 
             {
                 _gameOver = true;
             }
@@ -155,7 +156,7 @@ moves game::getLegitMoves(piece color) const
             {
                 if (testLegitMove(x, y, color)) 
                 {
-                    tempMoveStruct.addMove(x, y);
+                    tempMoveStruct.push_back(GamePair(x, y));
                 }
             }
         }

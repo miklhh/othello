@@ -1,5 +1,5 @@
 CC = g++
-CFLAGS = -std=c++17 -Wall -Wextra -Wpedantic -Weffc++ -O3
+CFLAGS = -std=c++11 -Wall -Wextra -Wpedantic -Weffc++ -O3
 OBJFILES = $(patsubst %.cc, %.o, $(wildcard *.cc))
 
 %.o: %.cc

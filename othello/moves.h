@@ -1,29 +1,16 @@
 /*
- * This is a structure for storing many moves in.
- * Use getMove, to get a move out of the structure. When using getMove, the
- * structure automaticlly removes that move from the structure. When there is no
- * move left stored in the structure, getMove will return a pair '(100 . 100).
- * It also contains a typedef for string a move inside it, GamePair.
+ * Data structure to help store a set of moves throughtout the game. Is was some
+ * sort of homemade jumbo-mombo in the original game, but the deque does its job
+ * (and more) better, so now it's just an alias for the std::deque.
  */
 
 #ifndef _MOVES_H
 #define _MOVES_H
 
-#include <vector>
 #include <utility>
+#include <deque>
 
-typedef std::pair<unsigned int, unsigned int> GamePair;
-
-class moves 
-{
-public:
-    bool testEmpty();
-    void addMove(unsigned x, unsigned y);
-    int getLength();
-    GamePair getMove();
-
-private:
-    std::vector<std::pair<unsigned int,unsigned int>> _datastruct{};
-};
+using GamePair = std::pair<unsigned, unsigned>;
+using moves = std::deque<GamePair>;
 
 #endif

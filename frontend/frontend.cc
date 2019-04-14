@@ -100,9 +100,9 @@ void frontend::drawUI(piece playerTurn)
 // Draw the possible moves for a player.
 void frontend::drawLegitMoves(moves legitMoves, piece color)
 {
-    while ( legitMoves.getLength() > 0 )
+    while ( legitMoves.size() > 0 )
     {
-        GamePair move = legitMoves.getMove();
+        GamePair move = legitMoves.front(); legitMoves.pop_front();
         int x = move.first, y = move.second;
         if (color == piece::BLACK)
         {

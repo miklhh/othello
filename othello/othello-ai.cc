@@ -92,11 +92,10 @@ mini ai::alphaBeta(
         moves allMoves = node.getLegitMoves(maximizingColor);
 
         // Start up new child-nodes.
-        while ( !allMoves.testEmpty() )
+        while ( !allMoves.empty() )
         {
-            // Setup temp values. getMove() automaticly pops the move out of 
-            // the stucture.
-            move tempMove = allMoves.getMove();
+            // Setup node values.
+            move tempMove = allMoves.front(); allMoves.pop_front();
             game tempNode = node;
             tempNode.makeMove(tempMove.first, tempMove.second, maximizingColor);
 
@@ -177,11 +176,10 @@ mini ai::alphaBeta(
         move bestMove;
         moves allMoves = node.getLegitMoves(reverseColor(maximizingColor));
 
-        while ( !allMoves.testEmpty() )
+        while ( !allMoves.empty() )
         {
-            // Setup temp values. getMove() automaticly removes that move from 
-            // the structure.
-            move tempMove = allMoves.getMove();
+            // Setup node values.
+            move tempMove = allMoves.front(); allMoves.pop_front();
             game tempNode = node;
             tempNode.makeMove(tempMove.first, tempMove.second, reverseColor(maximizingColor));
 
@@ -267,8 +265,8 @@ int ai::mobilityTester(game _game, piece maximizingColor)
     // This function will return a value between 16 and -16 depending on how
     // many moves the maximizing color has above the minimizing color. 
     piece minimizingColor = reverseColor(maximizingColor);
-    float maxValue = _game.getLegitMoves(maximizingColor).getLength();
-    float minValue = _game.getLegitMoves(minimizingColor).getLength();
+    float maxValue = _game.getLegitMoves(maximizingColor).size();
+    float minValue = _game.getLegitMoves(minimizingColor).size();
 
     if (minValue == 0)
     {
@@ -417,7 +415,7 @@ piece ai::getAiColor() const
 int ai::getSearchDepth()
 {
     // Shorten the search depth if there are overwhelming many moves available.
-    int moveCount = _currentGame.getLegitMoves(_aiColor).getLength();
+    int moveCount = _currentGame.getLegitMoves(_aiColor).size();
     return moveCount <= 7 ? _searchDepth : _searchDepth - 1;
 }
 

@@ -9,33 +9,24 @@
  * 2. Long time since I saw this last haha.
  *
  * Methods:
- * Public:
- * -- move evaluateMove ()             Make AI evaluate a new move.
- * -- void setAiColor(color)           Switch AI color.
- * -- piece getAiColor()               Get AI color.
- * -- void setCurrentGame(game)        Give AI the current game.
- * 
- * Private:
- * -- piece reverseColor(color)        Reverses the given color.
- * -- makeMini(see def.)               Makes a "mini" out of arguments.
- * -- int getSearchDepth(int)          Returns the search depth.
- * -- int heuristicValue(game, piece)  Returns the heuristic value of a board.
- * --
-*/
+ * -- move  evaluateMove ()         Make AI evaluate a new move.
+ * -- void  setAiColor(color)       Switch AI color.
+ * -- piece getAiColor()            Get AI color.
+ * -- void  setCurrentGame(game)    Give AI the current game.
+ */
 
 #ifndef _OTHELLO_AI_H
 #define _OTHELLO_AI_H
 
-#include <utility>
 #include "othello-game.h"
+#include <utility>
 
-typedef std::pair<int, std::pair<unsigned int, unsigned int>> mini;
-typedef std::pair<unsigned int, unsigned int> move;
+using mini = std::pair<int, std::pair<unsigned, unsigned>>;
+using move = std::pair<unsigned, unsigned>;
 
 class ai
 {
 public:
-
     // Public methods. Methods for interacting with the AI and its different
     // components.
     move  evaluateMove();
@@ -55,7 +46,7 @@ private:
                    move moveMade,
                    bool lateGame);
 
-    // Heurisitc value function and its help functions.
+    // Heurisitc valuing functions.
     int heuristicValue(game _game, piece maximizingColor);
     int mobilityTester(game _game, piece maximizingColor);
     int cornerTester(game _game, piece maximizingColor);

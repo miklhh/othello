@@ -45,6 +45,8 @@ int main()
         // Test if the game is over.
         if (othello.testGameOver())
         {
+            // Game over. Show the board for another two seconds than quit.
+            sf::sleep( sf::seconds(2) );
             frontend.window.close();
             break;
         }
@@ -91,6 +93,7 @@ int main()
 
     if ( othello.testGameOver() )
     {
+        // Game over. Print score in console.
         std::cout << "Game over: " << std::endl;
         std::cout << "    AI:    " << othello.testScoreWhite() << std::endl;
         std::cout << "    HUMAN: " << othello.testScoreBlack() << std::endl;

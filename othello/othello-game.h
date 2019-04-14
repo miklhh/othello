@@ -21,6 +21,7 @@
 
 #include "othello-board.h"
 #include "moves.h"
+#include <deque>
 
 class game
 {

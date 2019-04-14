@@ -1,7 +1,9 @@
-CC = g++
+CC = g++ -std=c++11 -Wall -Wextra -Wpedantic -Weffc++ -O3
 LINK = -lsfml-graphics -lsfml-window -lsfml-system
 
-.PHONY: othello frontend binary all clean
+.PHONY: all othello frontend binary clean
+
+all: othello frontend binary
 
 othello:
 	$(MAKE) -C othello
@@ -11,8 +13,6 @@ frontend:
 
 binary:
 	$(CC) $(wildcard build/*.o) $(LINK) -o game
-
-all: othello frontend binary
 
 clean:
 	-@rm -rfv build
