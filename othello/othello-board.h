@@ -51,7 +51,7 @@ public:
     board();
 
     // Public methods.
-    piece setTile(unsigned x, unsigned y, piece piece);
+    piece setTile(unsigned x, unsigned y, piece p);
     piece testTile(unsigned x, unsigned y) const noexcept;
 
 private:

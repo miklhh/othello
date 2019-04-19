@@ -14,7 +14,7 @@ board::board()
 }
 
 // Method setTile.
-piece board::setTile(unsigned int x, unsigned int y, piece piece)
+piece board::setTile(unsigned int x, unsigned int y, piece p)
 {
     // Make sure that you are on the board.
     if (x > 7 || y > 7)
@@ -23,8 +23,8 @@ piece board::setTile(unsigned int x, unsigned int y, piece piece)
     } 
     else 
     {
-        _gameBoard[x][y] = piece;
-        return piece;
+        _gameBoard[x][y] = p;
+        return p;
     }
 }
 
