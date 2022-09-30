@@ -298,7 +298,7 @@ int ai::cornerTester(game _game, piece maximizingColor)
     int maxCorners{}, minCorners{};
     piece minimizingColor = reverseColor(maximizingColor);
 
-    constexpr std::pair<int, int> corner[4] {
+    const std::pair<int, int> corner[4] {
         { 0, 0 }, { 0, 7 }, { 7, 0 }, { 7, 7 }
     };
     for (auto &&pair : corner)

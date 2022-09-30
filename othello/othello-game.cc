@@ -19,7 +19,7 @@ game::game()
 }
 
 // All eight combinations of pairs { [-1, 1], [-1, 1] } with { 0, 0 } excluded.
-constexpr static std::array<std::pair<int, int>, 8> seq_exclusive { {
+const static std::array<std::pair<int, int>, 8> seq_exclusive { {
     { -1, -1 }, { -1, 0 }, { -1, 1 },
     {  0, -1 }, /*     */  {  0, 1 },
     {  1, -1 }, {  1, 0 }, {  1, 1 } 
